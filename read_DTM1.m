@@ -14,27 +14,27 @@ end
 % NaN値を処理（必要に応じて）
 dtm_data = double(dtm_data);
 
-
-% 2D表示（上から見た図）
-figure(1);
-imagesc(dtm_data);
-colorbar;
-title('DTM 2D View');
-colormap(jet); % お好みのカラーマップを選択
-
-##% 3D表示用のグリッド作成
-##[rows, cols] = size(dtm_data);
-##[X, Y] = meshgrid(1:cols, 1:rows);
 ##
-##% 3D表示
-##figure(2);
-##surf(X, Y, dtm_data);
-##title('DTM 3D View');
-##xlabel('X');
-##ylabel('Y');
-##zlabel('Elevation (m)');
+##% 2D表示（上から見た図）
+##figure(1);
+##imagesc(dtm_data);
 ##colorbar;
-##shading interp; % 滑らかな表示（オプション）
-##
-##% 視点を調整
-##view(45, 30); % 方位角、仰角
+##title('DTM 2D View');
+##colormap(jet); % お好みのカラーマップを選択
+
+% 3D表示用のグリッド作成
+[rows, cols] = size(dtm_data);
+[X, Y] = meshgrid(1:cols, 1:rows);
+
+% 3D表示
+figure(2);
+surf(X, Y, dtm_data);
+title('DTM 3D View');
+xlabel('X');
+ylabel('Y');
+zlabel('Elevation (m)');
+colorbar;
+shading interp; % 滑らかな表示（オプション）
+
+% 視点を調整
+view(45, 30); % 方位角、仰角
